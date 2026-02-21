@@ -10,3 +10,6 @@ int main() {
 	for (int i = 0; i < s.size(); i++) {
 		m[s[i]].idx.push_back(i);
 	}
+
+unordered_multimap<char,int> m;
+m.count(c) 本身就能返回某个字符出现的次数
