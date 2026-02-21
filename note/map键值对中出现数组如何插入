@@ -1,0 +1,12 @@
+//统计字符串下标
+struct elm {
+	vector<int> idx;
+};
+ 
+int main() {
+	string s;
+	getline(cin,s);
+	map<char,elm> m;
+	for (int i = 0; i < s.size(); i++) {
+		m[s[i]].idx.push_back(i);
+	}
