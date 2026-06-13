@@ -2,3 +2,59 @@
 常规二分存在判断是否符合预期查找
 变体不好书写类似条件
 故利用一个全局变量记录新更新的答案，因为最近的往往是最近真实答案的
+
+https://oj.shumeng.tech/p/CSP202605B
+
+#include<bits/stdc++.h>
+#include<fstream> 
+using namespace std;
+
+using ll=long long;
+
+ll n,k,m,ans;
+
+ll func(ll t){
+	ll ans;
+	ans=(t*k+99)/100;
+	return ans;
+}
+
+bool test(ll l){
+	ll day=0,sum=n;
+	ll mid=l;
+	while(1){
+		if(day==m){
+			ans=mid;
+			return true;
+		}
+		ll broken=func(sum);
+		sum=sum-mid-broken;
+		if(sum>=0)
+			day++;
+		else
+			return false;
+	}
+}
+
+ll bisearch(ll l,ll r){
+	ll mid;
+	while(l<=r){
+		mid=(l+r)/2;
+		int flag=test(mid);
+		if(flag==1){
+			l=mid+1;
+		}
+		else{
+			r=mid-1;
+		}
+	}
+	return mid;
+}
+
+int main(){
+	cin>>n>>k>>m;
+	ll l=0,r=n/m+1;
+	bisearch(l,r);
+	cout<<ans<<endl;
+	return 0;
+}
